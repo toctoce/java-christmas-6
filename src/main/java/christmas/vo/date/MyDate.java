@@ -1,11 +1,9 @@
-package christmas.vo;
+package christmas.vo.date;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Set;
 import java.util.regex.Pattern;
-import christmas.common.ErrorMessage;
 import christmas.common.MyException;
 
 public record MyDate(LocalDate date) {
