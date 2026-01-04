@@ -55,6 +55,12 @@ public record MyDate(LocalDate date) {
     }
 
     public boolean isDDayDiscount() {
-        return date.getDayOfMonth() >= 1 && date.getDayOfMonth() <= 25;
+        return date.getDayOfMonth() <= 25;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d월 %d일", date.getMonthValue(), date.getDayOfMonth());
+    }
+
 }

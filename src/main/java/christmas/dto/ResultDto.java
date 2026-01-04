@@ -2,8 +2,8 @@ package christmas.dto;
 
 import christmas.vo.date.MyDate;
 
-public record Dto(String content) {
-    public static Dto from(MyDate myDate) {
+public record ResultDto(String content) {
+    public static ResultDto from(MyDate myDate) {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < 10; i++) {
@@ -12,6 +12,6 @@ public record Dto(String content) {
                     .append("\n");
         }
 
-        return new Dto(sb.toString());
+        return new ResultDto(sb.toString());
     }
 }
