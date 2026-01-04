@@ -53,15 +53,19 @@ public record Event(Order order, MyDate date) {
         return getDiscount() + getGift();
     }
 
+    public int getTotalPrice() {
+        return order.getOriginalPrice() - getDiscount();
+    }
+
     public String getBadge() {
-        if (getDiscount() >= 5000) {
-            return "별";
+        if (getTotalBenefit() >= 20000) {
+            return "산타";
         }
-        if (getDiscount() >= 10000) {
+        if (getTotalBenefit() >= 10000) {
             return "트리";
         }
-        if (getDiscount() >= 20000) {
-            return "산타";
+        if (getTotalBenefit() >= 5000) {
+            return "별";
         }
         return null;
     }
