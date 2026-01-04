@@ -36,4 +36,13 @@ class OrderTest {
         Order order = Order.from("크리스마스파스타-2,제로콜라-1");
         assertThat(order.getOriginalPrice()).isEqualTo(53000);
     }
+
+    @Test
+    void getCategoryCount() {
+        Order order = Order.from("양송이수프-1,타파스-2,바비큐립-3,크리스마스파스타-2,초코케이크-3,제로콜라-1");
+        assertThat(order.getCategoryCount("에피타이저")).isEqualTo(3);
+        assertThat(order.getCategoryCount("메인")).isEqualTo(5);
+        assertThat(order.getCategoryCount("디저트")).isEqualTo(3);
+        assertThat(order.getCategoryCount("음료")).isEqualTo(1);
+    }
 }

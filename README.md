@@ -303,13 +303,11 @@ BUILD SUCCESSFUL in 0s
 
 - vo
     - Payment
-        - [ ] Date, OriginalPrice, Event로 구성
+        - [ ] Date, Order, Event로 구성
         - [ ] 할인 전 금액 반환
         - [ ] 할인 후 금액 반
         - Date
             - [x] 디데이할인, 평일, 주말, 특별할인 날짜 체크
-        - OriginalPrice
-            - [ ] 10000원 이상인지 체크
         - Event
             - [ ] 이벤트 항목 전부 가지고 있는 값 객체
             - [ ] 증정 메뉴 반환

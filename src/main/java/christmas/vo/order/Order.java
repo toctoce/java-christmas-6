@@ -69,4 +69,11 @@ public record Order(Map<Menu, Integer> menus) {
                 .mapToInt(menu -> menu.getPrice() * menus.get(menu))
                 .sum();
     }
+
+    public int getCategoryCount(String category) {
+        return menus.keySet().stream()
+                .filter(menu -> menu.getCategory().equals(category))
+                .mapToInt(menus::get)
+                .sum();
+    }
 }
