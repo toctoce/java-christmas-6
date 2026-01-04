@@ -35,7 +35,7 @@ public record MyDate(LocalDate date) {
     }
 
     private static void validateFormat(String input) {
-        String REGEX = "[0-9]{1,2}";
+        String REGEX = "^[0-9]{1,2}$";
         if (!Pattern.matches(REGEX, input)) {
             throw new ChristmasException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
