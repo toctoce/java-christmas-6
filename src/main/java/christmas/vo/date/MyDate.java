@@ -46,7 +46,6 @@ public record MyDate(LocalDate date) {
     }
 
     public boolean isWeekend() {
-        System.out.println("date.getDayOfWeek() = " + date.getDayOfWeek());
         return date.getDayOfWeek() == DayOfWeek.FRIDAY || date.getDayOfWeek() == DayOfWeek.SATURDAY;
     }
 
