@@ -4,9 +4,6 @@ import christmas.vo.date.MyDate;
 import christmas.vo.order.Menu;
 import christmas.vo.order.Order;
 
-/*
-    items : [dDayDiscount, weekdayDiscount, weekendDiscount, specialDiscount, gift]
- */
 public record Event(Order order, MyDate date) {
 
     private boolean isLowerThan10000() {
@@ -48,18 +45,22 @@ public record Event(Order order, MyDate date) {
         return Menu.from("샴페인").getPrice();
     }
 
-    public int getTotalDiscount() {
-        return getDDayDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount() + getGift();
+    public int getDiscount() {
+        return getDDayDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount();
+    }
+
+    public int getTotalBenefit() {
+        return getDiscount() + getGift();
     }
 
     public String getBadge() {
-        if (getTotalDiscount() >= 5000) {
+        if (getDiscount() >= 5000) {
             return "별";
         }
-        if (getTotalDiscount() >= 10000) {
+        if (getDiscount() >= 10000) {
             return "트리";
         }
-        if (getTotalDiscount() >= 20000) {
+        if (getDiscount() >= 20000) {
             return "산타";
         }
         return null;
