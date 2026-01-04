@@ -39,7 +39,8 @@ class EventTest {
         assertThat(event7.getGift()).isEqualTo(25000);
         assertThat(cheapEvent.getGift()).isEqualTo(0);
 
-        assertThat(event7.getDiscount()).isEqualTo(1600 + 2023 * 3 + 0 + 0 + 25000);
+        assertThat(event7.getDiscount()).isEqualTo(1600 + 2023 * 3 + 0 + 0);
+        assertThat(event7.getTotalBenefit()).isEqualTo(1600 + 2023 * 3 + 0 + 0 + 25000);
         assertThat(cheaperThan10000Event.getWeekdayDiscount()).isEqualTo(0);
     }
 }
