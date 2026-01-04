@@ -51,4 +51,17 @@ public record Event(Order order, MyDate date) {
     public int getTotalDiscount() {
         return getDDayDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount() + getGift();
     }
+
+    public String getBadge() {
+        if (getTotalDiscount() >= 5000) {
+            return "별";
+        }
+        if (getTotalDiscount() >= 10000) {
+            return "트리";
+        }
+        if (getTotalDiscount() >= 20000) {
+            return "산타";
+        }
+        return null;
+    }
 }
