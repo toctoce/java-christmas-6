@@ -63,4 +63,10 @@ public record Order(Map<Menu, Integer> menus) {
             throw new ChristmasException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
+
+    public int getOriginalPrice() {
+        return menus.keySet().stream()
+                .mapToInt(menu -> menu.getPrice() * menus.get(menu))
+                .sum();
+    }
 }

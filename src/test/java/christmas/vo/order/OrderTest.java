@@ -30,4 +30,10 @@ class OrderTest {
         assertThatThrownBy(() -> Order.from(input))
                 .isInstanceOf(ChristmasException.class);
     }
+
+    @Test
+    void getOriginalPrice() {
+        Order order = Order.from("크리스마스파스타-2,제로콜라-1");
+        assertThat(order.getOriginalPrice()).isEqualTo(53000);
+    }
 }
