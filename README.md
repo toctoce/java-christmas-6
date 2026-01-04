@@ -273,3 +273,77 @@ BUILD SUCCESSFUL in 0s
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://docs.google.com/document/d/1cmg0VpPkuvdaetxwp4hnyyFC_G-1f2Gr8nIDYIWcKC8/edit?usp=sharing) 문서를 참고한다.
+
+## 체크리스트
+- 기능
+  - [ ] 크리스마스 디데이 할인
+  - [ ] 평일 할인
+  - [ ] 주말 할인
+  - [ ] 특별 할인
+  - [ ] 증정 이벤트
+  - [ ] 혜택 금액에 따른 배지 부여
+- 주의사항
+  - [ ] 총주문 금액 10,000원 이상부터 이벤트가 적용됩니다.
+  - [ ] 음료만 주문 시, 주문할 수 없습니다.
+  - [ ] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.
+- 입력
+  - [ ] 1 이상 31 이하의 숫자가 아닌 경우, "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요."
+  - [ ] 고객이 메뉴판에 없는 메뉴를 입력하는 경우, "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+  - [ ] 메뉴의 개수는 1 이상의 숫자만 입력되도록 해주세요. 이외의 입력값은 "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+  - [ ] 메뉴 형식이 예시와 다른 경우, "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+  - [ ] 중복 메뉴를 입력한 경우(e.g. 시저샐러드-1,시저샐러드-1), "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+
+## 구현할 기능
+
+- vo
+  - Payment
+    - [ ] Date, OriginalPrice, Event로 구성
+    - [ ] 할인 전 금액 반환
+    - [ ] 할인 후 금액 반
+    - Date
+      - [ ] 디데이할인, 평일, 주말, 특별할인 날짜 체크
+    - OriginalPrice
+      - [ ] 10000원 이상인지 체크
+    - Event
+      - [ ] 이벤트 항목 전부 가지고 있는 값 객체
+      - [ ] 증정 메뉴 반환
+      - [ ] 혜택 내역 반환
+      - [ ] 총 혜택 금액 반환
+  - Menu(enum)
+    - [ ] 메뉴명, 가격, 카테고리 포함
+  - Order
+    - [ ] 날짜, 메뉴 리스트로 구성
+    - [ ] from(사용자 입력)
+- controller
+  - [ ]  입력 받고 서비스로 넘긴 후 반환 받은 dto 출력
+  - [ ]  에러일 경우 출력 후 다시 입력받기
+- service
+  - [ ]  월, 요일 -> date 생성
+  - [ ]  특정 입력 → 특정 객체 생성
+
+## 디렉토리 구조
+```text
+directory
+├── Application.java
+├── common
+│   ├── MyException.java
+│   └── ErrorMessage.java
+├── config
+│   └── AppConfig.java
+├── controller
+│   └── Controller.java
+├── dto
+│   └── Dto.java
+├── service
+│   └── Service.java
+├── util
+│   ├── CSVParser.java
+│   └── MyCalendar.java
+├── view
+│   ├── InputView.java
+│   └── OutputView.java
+└── vo
+    └── datetime
+        ├── CSVParser.java
+        └── Datetime.java
+```
