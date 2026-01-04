@@ -1,6 +1,6 @@
 package christmas.vo.order;
 
-import christmas.common.MyException;
+import christmas.common.ChristmasException;
 import java.util.stream.Stream;
 
 public enum Menu {
@@ -47,6 +47,6 @@ public enum Menu {
         return Stream.of(Menu.values())
                 .filter(menu -> menu.getKor().equals((kor)))
                 .findFirst()
-                .orElseThrow(() -> new MyException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."));
+                .orElseThrow(() -> new ChristmasException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."));
     }
 }

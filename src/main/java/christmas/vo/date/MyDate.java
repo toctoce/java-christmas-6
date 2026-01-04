@@ -1,10 +1,10 @@
 package christmas.vo.date;
 
+import christmas.common.ChristmasException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.regex.Pattern;
-import christmas.common.MyException;
 
 public record MyDate(LocalDate date) {
 
@@ -30,14 +30,14 @@ public record MyDate(LocalDate date) {
     private static void validateRange(String input) {
         int dayOfMonth = Integer.parseInt(input);
         if (dayOfMonth <= 0 | dayOfMonth >= 32) {
-            throw new MyException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new ChristmasException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
     }
 
     private static void validateFormat(String input) {
         String REGEX = "[0-9]{1,2}";
         if (!Pattern.matches(REGEX, input)) {
-            throw new MyException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new ChristmasException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
     }
 
