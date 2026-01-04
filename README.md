@@ -302,10 +302,6 @@ BUILD SUCCESSFUL in 0s
 ## 구현할 기능
 
 - vo
-    - Payment
-        - [ ] Date, Order, Event로 구성
-        - [ ] 할인 전 금액 반환
-        - [ ] 할인 후 금액 반
     - Date
         - [x] 디데이할인, 평일, 주말, 특별할인 날짜 체크
     - Event
@@ -318,11 +314,11 @@ BUILD SUCCESSFUL in 0s
         - [x] 날짜, 메뉴 리스트로 구성
         - [x] from(사용자 입력)
 - controller
-    - [ ]  입력 받고 서비스로 넘긴 후 반환 받은 dto 출력
-    - [ ]  에러일 경우 출력 후 다시 입력받기
+    - [x]  입력 받고 서비스로 넘긴 후 반환 받은 dto 출력
+    - [x]  에러일 경우 출력 후 다시 입력받기
 - service
-    - [ ]  월, 요일 -> myDate 생성
-    - [ ]  특정 입력 → 특정 객체 생성
+    - [x]  일 -> myDate 생성
+    - [x]  주문 입력 → 주문 생성
 
 ## 디렉토리 구조
 
