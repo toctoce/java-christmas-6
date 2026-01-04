@@ -38,11 +38,18 @@ public record Event(Order order, MyDate date) {
         return 900 + date.date().getDayOfMonth() * 100;
     }
 
-    public int getGift() {
+    public Menu getGift() {
         if (isLowerThan10000() || order.getOriginalPrice() < 120_000) {
+            return null;
+        }
+        return Menu.from("샴페인");
+    }
+
+    public int getGiftPrice() {
+        if (getGift() == null) {
             return 0;
         }
-        return Menu.from("샴페인").getPrice();
+        return getGift().getPrice();
     }
 
     public int getDiscount() {
@@ -50,7 +57,7 @@ public record Event(Order order, MyDate date) {
     }
 
     public int getTotalBenefit() {
-        return getDiscount() + getGift();
+        return getDiscount() + getGiftPrice();
     }
 
     public int getTotalPrice() {

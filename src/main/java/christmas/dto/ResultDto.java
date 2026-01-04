@@ -39,9 +39,11 @@ public record ResultDto(String content) {
     private static String getGift(Event event) {
         StringBuilder sb = new StringBuilder();
         sb.append("<증정 메뉴>\n");
-//        todo: 수정
-        sb.append("샴페인 1개\n");
-
+        if (event.getGift() == null) {
+            sb.append("없음\n");
+            return sb.toString();
+        }
+        sb.append(String.format("%s 1개\n", event.getGift().getKor()));
         return sb.toString();
     }
 
@@ -53,7 +55,7 @@ public record ResultDto(String content) {
         int weekdayDiscount = event.getWeekdayDiscount();
         int weekendDiscount = event.getWeekendDiscount();
         int specialDiscount = event.getSpecialDiscount();
-        int gift = event.getGift();
+        int gift = event.getGiftPrice();
 
         if (dDayDiscount == 0 && weekdayDiscount == 0 && weekendDiscount == 0 && specialDiscount == 0 && gift == 0) {
             sb.append("없음\n");
