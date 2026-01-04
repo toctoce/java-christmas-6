@@ -19,6 +19,9 @@ class EventTest {
         Order cheapOrder = Order.from("양송이수프-1,바비큐립-1");
         Event cheapEvent = new Event(cheapOrder, MyDate.from("7"));
 
+        Order cheaperThan10000Order = Order.from("아이스크림-1");
+        Event cheaperThan10000Event = new Event(cheaperThan10000Order, MyDate.from("7"));
+
         assertThat(event7.getDDayDiscount()).isEqualTo(1600);
         assertThat(event8.getDDayDiscount()).isEqualTo(1700);
         assertThat(event25.getDDayDiscount()).isEqualTo(3400);
@@ -37,5 +40,6 @@ class EventTest {
         assertThat(cheapEvent.getGift()).isEqualTo(0);
 
         assertThat(event7.getTotalDiscount()).isEqualTo(1600 + 2023 * 3 + 0 + 0 + 25000);
+        assertThat(cheaperThan10000Event.getWeekdayDiscount()).isEqualTo(0);
     }
 }
